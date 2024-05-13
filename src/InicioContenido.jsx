@@ -8,7 +8,7 @@ const InicioContenido = () => {
   useEffect(() => {
     const obtenerProductosDestacados = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
+        const response = await fetch('http://localhost:8080/api/product/findAll');
         const data = await response.json();
         setProductosDestacados(data);
       } catch (error) {

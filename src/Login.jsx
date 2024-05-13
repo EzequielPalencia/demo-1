@@ -1,16 +1,42 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import "./Login.css"
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Aquí podrías agregar la lógica para enviar los datos de inicio de sesión al servidor
-    console.log('Email:', email);
-    console.log('Contraseña:', password);
+
+    try {
+      const data = {
+        email: email,
+        password: password
+      };
+
+      const response = await fetch('http://localhost:8080/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al iniciar sesión');
+      }
+      const responseData = await response.json();
+      console.log(responseData);
+      localStorage.setItem('token', responseData.message);
+      window.location.href= '/products';
+      // Manejar la respuesta exitosa aquí, por ejemplo, redireccionar al usuario a una nueva página
+      // window.location.href = '/dashboard';
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      setError('Error al iniciar sesión. Por favor, verifica tus credenciales.');
+    }
   };
 
   return (
@@ -32,7 +58,6 @@ const Login = () => {
           <label htmlFor="password">Contraseña:</label>
           <input
             placeholder='Ingrese su contraseña.'
-
             type="password"
             id="password"
             value={password}
@@ -40,6 +65,7 @@ const Login = () => {
             required
           />
         </div>
+        {error && <p className="error">{error}</p>}
         <button type="submit">Iniciar sesión</button>
       </form>
       <p>¿No tienes una cuenta? <Link to="/register">Regístrate</Link></p>
