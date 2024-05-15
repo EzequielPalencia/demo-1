@@ -42,22 +42,15 @@
   color: #007bff;
 }
 
-.button-container {
-  position: absolute; /* Establecemos una posición absoluta */
-  bottom: 10px; /* Lo colocamos 10px desde el borde inferior */
-  width: 100%;
-  text-align: center;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+.add-to-cart-button{
+  background-color: #007bf0;
   cursor: pointer;
+  background-color: #36d8f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
 }
-
-button:hover {
-  background-color: #0056b3;
+.add-to-cart-button:hover {
+  background-color: #2fd3cb;
 }

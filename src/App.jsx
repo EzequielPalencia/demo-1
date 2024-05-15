@@ -18,17 +18,18 @@ function App() {
       <Router>
         <Header />
         <Routes>
+          <Route path='/cart' element={<CartItem />}></Route>
           <Route path="/login" element={<Login />} />
           <Route path="products" element={<InicioContenido />} />
           <Route path="products" element={<ListaProductos />} />
-          <Route path='/cart' element={<CartItem />}></Route>
+          
 
           <Route path="register" element={<RegistroLogin/>} />
           
 
           <Route path="register" element={<RegistroLogin />} />
 
-          <Route path="cart" element={<CartItem />} />
+          
         </Routes>
         <Footer />
       </Router>
