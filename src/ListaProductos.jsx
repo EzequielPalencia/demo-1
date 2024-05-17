@@ -16,14 +16,21 @@ const ListaProductos = ({ productos }) => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product) => {
-    const updatedCart = [...cart, product];
-    setCart(updatedCart);
-  };
+  const addToCart = (newItem) => {
+    const updatedCart = [...cart];
+    const existingItemIndex = updatedCart.findIndex(item => item.id === newItem.id);
 
-  const removeFromCart = (index) => {
-    const updatedCart = [...cart.slice(0, index), ...cart.slice(index + 1)];
+    if (existingItemIndex >= 0) {
+      // Si el producto ya está en el carrito, incrementar la cantidad
+      updatedCart[existingItemIndex].quantity += 1;
+    } else {
+      // Si el producto no está en el carrito, añadirlo con cantidad inicial 1
+      updatedCart.push({ ...newItem, quantity: 1 });
+    }
+
     setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    
   };
 
   return (
@@ -31,7 +38,7 @@ const ListaProductos = ({ productos }) => {
       <h2>Nuestros Productos</h2>
       <div className="productos">
         {productos
-          .filter(producto => producto !== null) 
+          .filter(producto => producto !== null)
           .map((producto, index) => (
             <div key={index} className="producto">
               <img src={producto.images} alt={producto.title} className="producto-imagen" />

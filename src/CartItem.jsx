@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CartItem.css';
+import './CartItem.css'
 
 function CartItem() {
     const [cart, setCart] = useState([]);
@@ -48,6 +48,7 @@ function CartItem() {
         calculateTotalPrice(updatedCart); // Recalcular el precio total después de aumentar la cantidad
     };
 
+    
     const handleCheckout = () => {
         // Aquí puedes implementar la lógica para el proceso de compra
         console.log('Procesando compra...');
