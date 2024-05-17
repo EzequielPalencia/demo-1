@@ -28,9 +28,9 @@
 .nav-link {
   color: #333333; /* Cambié el color del texto para mayor contraste */
   text-decoration: none;
-  font-size: 18px; /* Reduje el tamaño de fuente */
+  font-size: 17px; /* Reduje el tamaño de fuente */
   font-family: Arial, sans-serif; /* Cambié la fuente a Arial para consistencia */
-  padding: 10px 20px; /* Ajusté el relleno para que los botones tengan más espacio */
+  padding: 10px 21px; /* Ajusté el relleno para que los botones tengan más espacio */
   transition: background-color 0.3s; /* Agregué una transición para suavizar el cambio de color al pasar el mouse */
 }
 
