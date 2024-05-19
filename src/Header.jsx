@@ -20,7 +20,7 @@ const Header = () => {
       <img src={Logo_Rivera} alt="Logo Rivera" className="Logo_Rivera" />
       <nav className="nav">
         <ul className="nav-list">
-          <li><Link to="/" className="nav-link">Inicio</Link></li>
+          <li><Link to="/Inicio" className="nav-link">Inicio</Link></li>
           <li><Link to="/products" className="nav-link">Productos</Link></li>
           {!isLoggedIn() && (
             <>

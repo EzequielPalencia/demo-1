@@ -1,56 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
 .lista-productos {
-  max-width: 800px;
-  margin: 0 auto; /* Centra el contenedor en la página */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.lista-productos h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .productos {
-  position: relative; /* Establecemos una posición relativa */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  justify-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center;
+}
+
+.producto-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .producto {
-  position: relative; /* Establecemos una posición relativa */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  width: 100%; /* Asegura que los productos ocupen todo el ancho del contenedor */
-  text-align: center; /* Centra el texto dentro de cada producto */
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  width: 300px;
+  margin: 20px;
+}
+
+.producto:hover {
+  transform: translateY(-10px);
 }
 
 .producto-imagen {
-  width: 100%;
-  height: 150px; /* Establece una altura fija para las imágenes */
-  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
-  border-radius: 5px;
+  width: 70%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .producto-detalle {
-  color: black;
+  padding: 15px;
 }
 
 .producto-titulo {
-  margin-top: 0;
-  margin-bottom: 5px;
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #333;
 }
 
 .producto-precio {
-  margin-top: 0;
-  color: #007bff;
-}
-
-.add-to-cart-button{
-  background-color: #007bf0;
-  cursor: pointer;
-  background-color: #36d8f4;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-}
-.add-to-cart-button:hover {
-  background-color: #2fd3cb;
+  font-size: 1.2em;
+  color: #28a745;
+  font-weight: bold;
 }
