@@ -56,12 +56,14 @@ function ProductView() {
 
   return (
     <div className="product-view-container">
-      <img src={product.images} alt={product.title} />
       <div className="product-details">
-        <h1>{product.name}</h1>
-        <p >{product.category}</p>
-        <p>Precio: ${product.price}</p>
-        <button onClick={() => addToCart(product)} className="add-to-cart-button">Agregar al carrito</button>
+        <img src={product.images} alt={product.title} />
+        <div className="details-text">
+          <h1>{product.name}</h1>
+          <p>{product.category}</p>
+          <p>Precio: ${product.price}</p>
+          <button onClick={() => addToCart(product)} className="add-to-cart-button">Agregar al carrito</button>
+        </div>
       </div>
     </div>
   );
