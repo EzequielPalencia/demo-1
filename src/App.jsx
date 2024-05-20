@@ -9,6 +9,7 @@ import RegistroLogin from './RegistroLogin';
 import CartItem from './CartItem';
 import ProductView from './ProductView';
 import Inicio from './Inicio';
+import ViewAdmin from './ViewAdmin';
 
 
 
@@ -30,7 +31,7 @@ function App() {
           
 
           <Route path="register" element={<RegistroLogin />} />
-
+          <Route path='/admin' element={<ViewAdmin/>}/>
           
         </Routes>
         <Footer />
