@@ -18,7 +18,7 @@ const Header = () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await fetch('http://localhost:8080/api/usuario/findByToken', { // Cambia la URL por la ruta correcta de tu API
+          const response = await fetch('http://localhost:8080/api/usuario/findByEmail', { // Cambia la URL por la ruta correcta de tu API
             headers: {
               'Authorization': `Bearer ${token}`,
             },
