@@ -31,6 +31,7 @@ function ProductView() {
     }
 
     setCart(updatedCart);
+    console.log(cart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
@@ -62,7 +63,7 @@ function ProductView() {
           <h1>{product.name}</h1>
           <p>{product.category}</p>
           <p>Precio: ${product.price}</p>
-          <button onClick={() => addToCart(product)} className="add-to-cart-button">Agregar al carrito</button>
+          <button onClick={() => addToCart({ ...product, productId: product.id })} className="add-to-cart-button">Agregar al carrito</button>
         </div>
       </div>
     </div>

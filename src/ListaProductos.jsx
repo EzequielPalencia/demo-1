@@ -3,7 +3,7 @@ import './ListaProductos.css';
 import { Link } from 'react-router-dom';
 
 const ListaProductos = ({ productos }) => {
-  
+  console.log(productos);
 
   return (
     <div className="lista-productos">

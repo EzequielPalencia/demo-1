@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './CartItem.css'
+import { useNavigate } from 'react-router-dom';
+import './CartItem.css';
 
 function CartItem() {
     const [cart, setCart] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const navigate = useNavigate(); 
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
+        console.log(storedCart);
         if (storedCart) {
             try {
                 const parsedCart = JSON.parse(storedCart);
@@ -48,10 +52,13 @@ function CartItem() {
         calculateTotalPrice(updatedCart); // Recalcular el precio total después de aumentar la cantidad
     };
 
-    
     const handleCheckout = () => {
-        // Aquí puedes implementar la lógica para el proceso de compra
-        console.log('Procesando compra...');
+        setLoading(true);
+        setTimeout(() =>{
+            setLoading(false);
+            navigate('/pay', { state: { totalPrice } });  
+        }, 1000)
+        
     };
 
     return (
@@ -85,8 +92,17 @@ function CartItem() {
                     ))}
                 </tbody>
             </table>
-            <p>Total: ${totalPrice}</p>
-            <button onClick={handleCheckout} className="checkout-button">Realizar compra</button>
+            <div className='card-total'>
+                <h4>Resumen de compra</h4>
+                <p>Total: ${totalPrice}</p>
+            </div>
+
+            
+            <div className='div-button'>
+                <button onClick={handleCheckout} className="checkout-button" disabled={loading}>
+                    {loading ? 'Procediendo al pago...' : 'Continuar Compra'}
+                </button>
+            </div>
         </div>
     );
 }

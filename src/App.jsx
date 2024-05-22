@@ -10,6 +10,8 @@ import CartItem from './CartItem';
 import ProductView from './ProductView';
 import Inicio from './Inicio';
 import ViewAdmin from './ViewAdmin';
+import Pago from './Pago';
+import PagoRealizado from './PagoRealizado';
 
 
 
@@ -32,7 +34,8 @@ function App() {
 
           <Route path="register" element={<RegistroLogin />} />
           <Route path='/admin' element={<ViewAdmin/>}/>
-          
+          <Route path='/pay' element={<Pago/>} />
+          <Route path='/pay-successfully' element={<PagoRealizado/>}/>
         </Routes>
         <Footer />
       </Router>

@@ -65,7 +65,7 @@ const Header = () => {
           <li><Link to="/cart" className="nav-link"><img src="carritocompras.png" alt="" height="30" /></Link></li>
           {isLoggedIn() && (
             <>
-              <a href='' className="nav-link" onClick={logout}>Logout</a>
+              <a href='' className="nav-link" onClick={logout}>Cerrar sesión</a>
             </>
           )}
         </ul>
