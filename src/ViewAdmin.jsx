@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Modal.css';
 
-
-const ViewAdmin = () => {                                     
+const ViewAdmin = () => {
   const [product, setProduct] = useState({
     name: '',
     price: '',
@@ -13,16 +12,17 @@ const ViewAdmin = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editingProductId, setEditingProductId] = useState(null);
+  const [reloadPage, setReloadPage] = useState(false);
 
   const [products, setProducts] = useState([]);
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
     setProduct(prevState => ({
-      ...prevState,
-      [name]: files ? files[0] : value
-    }));
-  };
+        ...prevState,
+        [name]: files ? files[0] : value
+      }));
+    };
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
@@ -92,6 +92,8 @@ const ViewAdmin = () => {
         setIsEditing(false);
         setEditingProductId(null);
         fetchProducts();
+        window.location.reload();
+       
       } else {
         console.error('Error al actualizar el producto');
       }
@@ -126,7 +128,11 @@ const ViewAdmin = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+    if (reloadPage) {
+      setReloadPage(false); // Restablecer reloadPage a false antes de recargar la página
+      window.location.reload(); // Recargar la página
+    }
+  }, [reloadPage]);
 
   const handleDeleteProduct = async (productId) => {
     try {
@@ -249,3 +255,4 @@ const ViewAdmin = () => {
 };
 
 export default ViewAdmin;
+
